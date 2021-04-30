@@ -31,9 +31,9 @@
     <url>https://absaoss.github.io/spline/</url>
 
     <scm>
-        <connection>scm:git:git://github.com/AbsaOSS/spline-root-pom.git</connection>
-        <developerConnection>scm:git:ssh://github.com:AbsaOSS/spline-root-pom.git</developerConnection>
-        <url>http://github.com/AbsaOSS/spline-root-pom/tree/master</url>
+        <url>${scm.url}</url>
+        <connection>${scm.connection}</connection>
+        <developerConnection>${scm.developerConnection}</developerConnection>
         <tag>HEAD</tag>
     </scm>
 
@@ -52,6 +52,14 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+
+        <!-- SCM -->
+
+        <scm.url><!-- defined externally --></scm.url>
+        <scm.connection><!-- defined externally --></scm.connection>
+        <scm.developerConnection><!-- defined externally --></scm.developerConnection>
+
+        <!-- Docker -->
 
         <dockerfile.versionTagPrefix><!-- defined externally --></dockerfile.versionTagPrefix>
         <dockerfile.versionTagSuffix><!-- defined externally --></dockerfile.versionTagSuffix>
