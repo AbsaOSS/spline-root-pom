@@ -117,17 +117,6 @@
         </developer>
     </developers>
 
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
-
     <profiles>
 
         <!-- Enables license check routine -->
@@ -159,9 +148,58 @@
             </build>
         </profile>
 
+        <!-- Release routine configuration -->
+        <profile>
+            <id>release</id>
+            <properties>
+                <project.scm.id>spline-scm-server</project.scm.id>
+            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <version>2.5.3</version>
+                        <configuration>
+                            <tagNameFormat>release/@{project.version}</tagNameFormat>
+                            <providerImplementations>
+                                <git>jgit</git>
+                            </providerImplementations>
+                        </configuration>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.apache.maven.scm</groupId>
+                                <artifactId>maven-scm-api</artifactId>
+                                <version>1.11.2</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.apache.maven.scm</groupId>
+                                <artifactId>maven-scm-provider-jgit</artifactId>
+                                <version>1.11.2</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.eclipse.jgit</groupId>
+                                <artifactId>org.eclipse.jgit</artifactId>
+                                <version>5.5.1.201910021850-r</version>
+                            </dependency>
+                        </dependencies>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
         <!-- Enables OSSRH deploy routine -->
         <profile>
             <id>ossrh</id>
+            <distributionManagement>
+                <snapshotRepository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+                </snapshotRepository>
+                <repository>
+                    <id>ossrh</id>
+                    <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+                </repository>
+            </distributionManagement>
             <build>
                 <plugins>
                     <plugin>
