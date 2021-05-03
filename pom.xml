@@ -122,6 +122,11 @@
         <!-- Enables license check routine -->
         <profile>
             <id>license-check</id>
+            <activation>
+                <property>
+                    <name>license-check</name>
+                </property>
+            </activation>
             <build>
                 <plugins>
                     <plugin>
@@ -151,6 +156,11 @@
         <!-- Release routine configuration -->
         <profile>
             <id>release</id>
+            <activation>
+                <property>
+                    <name>release</name>
+                </property>
+            </activation>
             <properties>
                 <project.scm.id>spline-scm-server</project.scm.id>
             </properties>
@@ -190,6 +200,11 @@
         <!-- Enables OSSRH deploy routine -->
         <profile>
             <id>ossrh</id>
+            <activation>
+                <property>
+                    <name>ossrh</name>
+                </property>
+            </activation>
             <distributionManagement>
                 <snapshotRepository>
                     <id>ossrh</id>
@@ -263,6 +278,11 @@
         <!-- Enables Docker image(s) build / deploy -->
         <profile>
             <id>docker</id>
+            <activation>
+                <property>
+                    <name>docker</name>
+                </property>
+            </activation>
             <build>
                 <plugins>
                     <plugin>
